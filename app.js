@@ -15,7 +15,7 @@ const httpLogger = require('./helpers/logger/httpLogger');
 // Importing all the Routes Below
 const indexRoute = require('./routes/indexRoutes');
 const GlobalErrorHandler = require('./middlewares/globalErrorHandler');
-const PGDatabaseErrorHandler = require('./middlewares/DatabaseErrorHandler');
+const MONGODatabaseErrorHandler = require('./middlewares/DatabaseErrorHandler');
 const JoiValidationErrorHandler = require('./middlewares/ValidationErrorHandler');
 const {FallbackOrigin} = require('./helpers/constants/general.constants');
 const MulterErrorHandler = require('./middlewares/MulterErrorHandler');
@@ -107,7 +107,7 @@ app.use((req, res) => {
 app.use(Sentry.Handlers.errorHandler());
 
 // Calling the database error handler middleware here
-app.use(PGDatabaseErrorHandler);
+app.use(MONGODatabaseErrorHandler);
 
 // Calling the multer error handler middleware here
 app.use(MulterErrorHandler);

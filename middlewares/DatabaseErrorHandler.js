@@ -2,7 +2,7 @@ const {DatabaseError} = require('pg');
 const logger = require('../helpers/logger/logger');
 const {DatabaseForeignError, DatabaseUniqueKeyError} = require('../helpers/errors/api-errors');
 
-const PGDatabaseErrorHandler = (error, req, res, next) => {
+const MONGODatabaseErrorHandler = (error, req, res, next) => {
 	if (error instanceof DatabaseError) {
 		logger.error(`error ${error.message}`);
 		const status = error.status || 500;
@@ -26,4 +26,4 @@ const PGDatabaseErrorHandler = (error, req, res, next) => {
 	}
 };
 
-module.exports = PGDatabaseErrorHandler;
+module.exports = MONGODatabaseErrorHandler;
