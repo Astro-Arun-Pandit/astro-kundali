@@ -1,0 +1,32 @@
+# Deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: astro-kundali-deployment
+spec:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: astro-kundali-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: astro-kundali-backend-app
+  template:
+    metadata:
+      labels:
+        app:  astro-kundali-backend-app
+    spec:
+      containers:
+        - name: backend-container
+          image: my_image:latest
+          volumeMounts:
+            - name: storage-volume
+              mountPath: /usr/src/app/public
+          ports:
+            - containerPort: 5600
+      volumes:
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: file-storage-pvc

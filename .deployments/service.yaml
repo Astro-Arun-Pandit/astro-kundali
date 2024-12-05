@@ -1,0 +1,14 @@
+# Service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name:  astro-kundali-backend-service
+spec:
+  selector:
+    app:  astro-kundali-backend-app
+  ports:
+    - protocol: TCP
+      port: 5600
+      targetPort: 5600
+      nodePort: 30011
+  type: NodePort
